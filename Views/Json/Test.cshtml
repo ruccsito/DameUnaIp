@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>:D</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/bs-3.3.5/jq-2.1.4,dt-1.10.8/datatables.min.css" />
+
+</head>
+<body>
+    <!-- Main -->
+    <div class="container">
+        
+        <div class="row">
+            <h2> IPs :D </h2>
+        </div>
+
+        <div class="row">
+            <table id="servers" class="table" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Address</th>
+                        <th>In Use</th>
+                        <th>vLan</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        
+    </div>
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://cdn.datatables.net/r/bs-3.3.5/jqc-1.11.3,dt-1.10.8/datatables.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#servers').dataTable({
+                "bServerSide": true,
+                "sAjaxSource": "/json/query",
+                "bProcessing": true,
+                "aoColumns": [
+                                { "sName": "id" },
+                                { "sName": "addr" },
+                                { "sName": "inuse" },
+                                { "sName": "vlan" },
+                                { "sName": "ping" }
+                ]
+            });
+        });
+    </script>
+
+</body>
+</html>
