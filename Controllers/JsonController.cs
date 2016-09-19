@@ -48,7 +48,6 @@ namespace DameUnaIP.Controllers
         }
 
         // GET: Json for Servers
-        // TODO: Modificar para que muestre servers.
         public ActionResult Servers(DataTablesModel param)
         {
             ServerDBContext db = new ServerDBContext();
