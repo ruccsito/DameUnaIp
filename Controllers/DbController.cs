@@ -94,7 +94,7 @@ namespace DameUnaIP.Controllers
                     Name = "FNGARBASRV" + rnd.Next(1000, 2000).ToString(),
                     OsId = rnd.Next(1, 6),
                     Created = DateTime.Now,
-                    IpAddrId = rnd.Next(1527, 2288)
+                    IpAddrId = rnd.Next(1, 255)
                 };
                 db.Servers.Add(srv);
             }
