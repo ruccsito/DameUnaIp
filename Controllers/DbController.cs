@@ -16,6 +16,7 @@ namespace DameUnaIP.Controllers
             return Content("Hola :)");
         }
 
+        // Crear cosas en la DB.
         public ActionResult UpdateByPing()
         {
             ServerDBContext db = new ServerDBContext();
@@ -37,6 +38,7 @@ namespace DameUnaIP.Controllers
 
             return Content(":D");
         }
+
         public ActionResult CreateBase()
         {
             ServerDBContext db = new ServerDBContext();
