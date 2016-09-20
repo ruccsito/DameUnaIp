@@ -1,0 +1,50 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<DameUnaIP.Models.IpAddrModel>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <b>Servers</b>
+            </div>
+            <div class="panel-body">
+                <table id="servers" class="table table-striped" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Addr)</th>
+                            <th>@Html.DisplayNameFor(model => model.InUse)</th>
+                            <th>@Html.DisplayNameFor(model => model.Vlans)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#servers').dataTable({
+                "bServerSide": true,
+                "sAjaxSource": "/json/ips",
+                "bProcessing": true,
+                "aoColumns": [
+                                { "sName": "IpAddr" },
+                                { "sName": "InUse" },
+                                { "sName": "Vlans" },
+                                { "sName": "Ping" }
+                ]
+            });
+        });
+</script>

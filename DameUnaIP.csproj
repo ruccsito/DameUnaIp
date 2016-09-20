@@ -195,6 +195,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\IpsController.cs" />
     <Compile Include="Controllers\Original\AccountController.cs" />
     <Compile Include="Controllers\DbController.cs" />
     <Compile Include="Controllers\Original\HomeController.cs" />
@@ -224,6 +225,7 @@
     <Compile Include="Models\IpAddrModel.cs" />
     <Compile Include="Models\OriginalModels\ManageViewModels.cs" />
     <Compile Include="Models\OsModel.cs" />
+    <Compile Include="Models\PostModels\NewServerModel.cs" />
     <Compile Include="Models\ServerDBContext.cs" />
     <Compile Include="Models\ServersModel.cs" />
     <Compile Include="Models\VlansModel.cs" />
@@ -299,6 +301,8 @@
     <Content Include="Views\SrvSca\Index.cshtml" />
     <Content Include="Views\Servers\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Ips\Index.cshtml" />
+    <Content Include="Views\Servers\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

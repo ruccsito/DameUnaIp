@@ -22,6 +22,7 @@ namespace DameUnaIP.Controllers
             ServerDBContext db = new ServerDBContext();
 
             var AllIps = from i in db.IpAddrs
+                         where i.vlanId == 1
                          select i;
 
             Ping myPing = new Ping();
@@ -32,9 +33,11 @@ namespace DameUnaIP.Controllers
 
                 if (myPingReply.Status == IPStatus.Success)
                 {
-                    // Updatear la DB para marcar como inUse.
+                    i.InUse = true;
                 }
             }
+
+            db.SaveChanges();
 
             return Content(":D");
         }

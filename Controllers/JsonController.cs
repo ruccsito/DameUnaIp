@@ -24,7 +24,7 @@ namespace DameUnaIP.Controllers
             if (string.IsNullOrEmpty(param.sSearch))
             {
                 results = (from i in query
-                           select new[] { i.id.ToString(), i.Addr, i.InUse.ToString(), i.Vlans.Name, "<a href=\"/json/Pinguear/" + i.id + "\">Pingueala! </a>" })
+                           select new[] { i.Addr, i.InUse.ToString(), i.Vlans.Name, "<a href=\"/json/Pinguear/" + i.id + "\">Pingueala! </a>" })
                           .Skip(param.iDisplayStart)
                           .Take(param.iDisplayLength);
             }
@@ -33,7 +33,7 @@ namespace DameUnaIP.Controllers
             {
                 results = (from i in query
                            where i.Addr.Contains(param.sSearch) 
-                           select new[] { i.id.ToString(), i.Addr, i.InUse.ToString(), i.Vlans.Name, "<a href=\"/json/Pinguear/" + i.id + "\">Pingueala! </a>" })
+                           select new[] { i.Addr, i.InUse.ToString(), i.Vlans.Name, "<a href=\"/json/Pinguear/" + i.id + "\">Pingueala! </a>" })
                           .Skip(param.iDisplayStart)
                           .Take(param.iDisplayLength);
             }
