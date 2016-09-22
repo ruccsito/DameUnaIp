@@ -12,16 +12,52 @@
                 <b>IPs</b>
             </div>
             <div class="panel-body">
-                <table id="servers" class="table table-striped" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th>@Html.DisplayNameFor(model => model.Addr)</th>
-                            <th>@Html.DisplayNameFor(model => model.InUse)</th>
-                            <th>@Html.DisplayNameFor(model => model.Vlans)</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                </table>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#Tapeless" aria-controls="Tapeless" role="tab" data-toggle="tab">Tapeless</a></li>
+                    <li role="presentation"><a href="#Broadcast" aria-controls="Broadcast" role="tab" data-toggle="tab">Broadcast</a></li>
+                    <li role="presentation"><a href="#Managment" aria-controls="Managment" role="tab" data-toggle="tab">Managment</a></li>
+                </ul>
+
+                <!-- Tab content -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="Tapeless">
+                        <table id="TapelessTable" class="table table-striped" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.Addr)</th>
+                                    <th>@Html.DisplayNameFor(model => model.InUse)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Vlans)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="Broadcast">
+                        <table id="BroadcastTable" class="table table-striped" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.Addr)</th>
+                                    <th>@Html.DisplayNameFor(model => model.InUse)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Vlans)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="Managment">
+                        <table id="ManagmentTable" class="table table-striped" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.Addr)</th>
+                                    <th>@Html.DisplayNameFor(model => model.InUse)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Vlans)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -33,17 +69,29 @@
 
 <script type="text/javascript">
         $(document).ready(function () {
-
-            $('#servers').dataTable({
-                "bServerSide": true,
-                "sAjaxSource": "/json/ips",
-                "bProcessing": true,
-                "aoColumns": [
-                                { "sName": "IpAddr" },
-                                { "sName": "InUse" },
-                                { "sName": "Vlans" },
-                                { "sName": "Ping" }
-                ]
-            });
+            loadTable('TapelessTable', '1');
+            loadTable('BroadcastTable', '2');
+            loadTable('ManagmentTable', '3');
         });
+
+
+        function loadTable(table, id) {
+
+            var rows = $('#' + table + "_table tbody tr").length;
+
+            if (rows < 1) {
+
+                $('#' + table).dataTable({
+                    "bServerSide": true,
+                    "sAjaxSource": "/json/ips/" + id,
+                    "bProcessing": true,
+                    "aoColumns": [
+                                    { "sName": "IpAddr" },
+                                    { "sName": "InUse" },
+                                    { "sName": "Vlans" },
+                                    { "sName": "Ping" }
+                    ]
+                });
+            }
+        }
 </script>
