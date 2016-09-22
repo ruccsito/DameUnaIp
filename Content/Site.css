@@ -5,3 +5,8 @@
 .logo {
     font-family: 'Bungee', cursive;
 }
+
+/* En /ips/index separo el datables de los tabs*/
+.tab-content{
+    padding-top: 15px;
+}
