@@ -195,6 +195,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\IpsController.cs" />
     <Compile Include="Controllers\Original\AccountController.cs" />
     <Compile Include="Controllers\DbController.cs" />
@@ -219,6 +220,7 @@
       <DependentUpon>201609182311433_KeepItUpdated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\OriginalModels\AccountViewModels.cs" />
     <Compile Include="Models\DataTablesModel.cs" />
     <Compile Include="Models\OriginalModels\IdentityModels.cs" />
@@ -304,6 +306,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Ips\Index.cshtml" />
     <Content Include="Views\Servers\Create.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
