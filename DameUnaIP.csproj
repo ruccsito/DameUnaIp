@@ -219,6 +219,10 @@
     <Compile Include="Migrations\201609182311433_KeepItUpdated.Designer.cs">
       <DependentUpon>201609182311433_KeepItUpdated.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609231747373_Inicial.cs" />
+    <Compile Include="Migrations\201609231747373_Inicial.Designer.cs">
+      <DependentUpon>201609231747373_Inicial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\OriginalModels\AccountViewModels.cs" />
@@ -328,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609182311433_KeepItUpdated.resx">
       <DependentUpon>201609182311433_KeepItUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609231747373_Inicial.resx">
+      <DependentUpon>201609231747373_Inicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

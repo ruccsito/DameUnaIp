@@ -58,8 +58,9 @@ namespace DameUnaIP.Controllers
             db.Os.Add(new OsModel { OsName = "Ubuntu 14", Family = "Unix" });
 
             db.Os.Add(new OsModel { OsName = "Windows 2008", Family = "Windows" });
-            db.Os.Add(new OsModel { OsName = "Windows 2012", Family = "Windows" });
+            db.Os.Add(new OsModel { OsName = "Windows 2012 R2", Family = "Windows" });
             db.Os.Add(new OsModel { OsName = "Windows 7", Family = "Windows" });
+            db.Os.Add(new OsModel { OsName = "Windows 10", Family = "Windows" });
 
             db.SaveChanges();
 
@@ -78,6 +79,15 @@ namespace DameUnaIP.Controllers
                 db.IpAddrs.Add(new IpAddrModel { Addr = "10.220.217." + i, InUse = false, vlanId = 3 });
             }
 
+            for (int i = 129; i < 159; i++)
+            {
+                db.IpAddrs.Add(new IpAddrModel { Addr = "10.220.217." + i, InUse = false, vlanId = 4 });
+            }
+
+            for (int i = 1; i < 31; i++)
+            {
+                db.IpAddrs.Add(new IpAddrModel { Addr = "10.220.218." + i, InUse = false, vlanId = 5 });
+            }
             db.SaveChanges();
 
 

@@ -8,7 +8,7 @@ namespace DameUnaIP.Models
 {
     public class ServerDBContext : DbContext
     {
-        public ServerDBContext() : base()
+        public ServerDBContext() : base("SQLExpress")
         {
 
         }

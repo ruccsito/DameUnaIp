@@ -7,6 +7,7 @@ using System.Web;
 
 namespace DameUnaIP.Models
 {
+    [Table("IpAddr")]
     public class IpAddrModel
     {
         public int id { get; set; }
