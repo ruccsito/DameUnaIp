@@ -90,14 +90,14 @@ namespace DameUnaIP.Controllers
 
             Random rnd = new Random();
 
-            for (int i = 0; i < 40; i++)
+            for (int i = 0; i < 38; i++)
             {
                 ServersModel srv = new ServersModel()
                 {
-                    Name = "FNGARBASRV" + rnd.Next(1000, 2000).ToString(),
+                    Name = "FNGARBASRV" + rnd.Next(400, 600).ToString(),
                     OsId = rnd.Next(1, 6),
                     Created = DateTime.Now,
-                    IpAddrId = rnd.Next(1, 255)
+                    IpAddrId = rnd.Next(550, 690)
                 };
                 db.Servers.Add(srv);
             }

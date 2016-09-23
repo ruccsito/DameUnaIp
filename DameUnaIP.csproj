@@ -195,6 +195,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\IpsController.cs" />
     <Compile Include="Controllers\Original\AccountController.cs" />
     <Compile Include="Controllers\DbController.cs" />
@@ -219,6 +220,7 @@
       <DependentUpon>201609182311433_KeepItUpdated.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\OriginalModels\AccountViewModels.cs" />
     <Compile Include="Models\DataTablesModel.cs" />
     <Compile Include="Models\OriginalModels\IdentityModels.cs" />
@@ -247,6 +249,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="readme.md" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -303,6 +306,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Ips\Index.cshtml" />
     <Content Include="Views\Servers\Create.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

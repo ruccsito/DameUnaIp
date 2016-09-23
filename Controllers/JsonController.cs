@@ -13,17 +13,18 @@ namespace DameUnaIP.Controllers
     public class JsonController : Controller
     {
         // GET: Json for IPs
-        public ActionResult IPs(DataTablesModel param)
+        public ActionResult IPs(int id, DataTablesModel param)
         {
             ServerDBContext db = new ServerDBContext();
 
-            var query = (from i in db.IpAddrs select i).ToArray();
+            var query = (from i in db.IpAddrs where i.vlanId == id select i).ToArray();
 
             IEnumerable<string[]> results;
 
             if (string.IsNullOrEmpty(param.sSearch))
             {
                 results = (from i in query
+                           where i.vlanId == id
                            select new[] { i.Addr, i.InUse.ToString(), i.Vlans.Name, "<a href=\"/json/Pinguear/" + i.id + "\">Pingueala! </a>" })
                           .Skip(param.iDisplayStart)
                           .Take(param.iDisplayLength);
@@ -32,7 +33,7 @@ namespace DameUnaIP.Controllers
             else
             {
                 results = (from i in query
-                           where i.Addr.Contains(param.sSearch) 
+                           where i.vlanId == id && i.Addr.Contains(param.sSearch) 
                            select new[] { i.Addr, i.InUse.ToString(), i.Vlans.Name, "<a href=\"/json/Pinguear/" + i.id + "\">Pingueala! </a>" })
                           .Skip(param.iDisplayStart)
                           .Take(param.iDisplayLength);
