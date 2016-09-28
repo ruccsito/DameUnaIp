@@ -79,6 +79,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -207,21 +208,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609161332460_Initial.cs" />
-    <Compile Include="Migrations\201609161332460_Initial.Designer.cs">
-      <DependentUpon>201609161332460_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609161348190_doublecheck.cs" />
-    <Compile Include="Migrations\201609161348190_doublecheck.Designer.cs">
-      <DependentUpon>201609161348190_doublecheck.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609182311433_KeepItUpdated.cs" />
-    <Compile Include="Migrations\201609182311433_KeepItUpdated.Designer.cs">
-      <DependentUpon>201609182311433_KeepItUpdated.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201609231747373_Inicial.cs" />
-    <Compile Include="Migrations\201609231747373_Inicial.Designer.cs">
-      <DependentUpon>201609231747373_Inicial.cs</DependentUpon>
+    <Compile Include="Migrations\201609271855466_Initial.cs" />
+    <Compile Include="Migrations\201609271855466_Initial.Designer.cs">
+      <DependentUpon>201609271855466_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DashboardModel.cs" />
@@ -324,17 +313,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609161332460_Initial.resx">
-      <DependentUpon>201609161332460_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609161348190_doublecheck.resx">
-      <DependentUpon>201609161348190_doublecheck.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609182311433_KeepItUpdated.resx">
-      <DependentUpon>201609182311433_KeepItUpdated.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201609231747373_Inicial.resx">
-      <DependentUpon>201609231747373_Inicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609271855466_Initial.resx">
+      <DependentUpon>201609271855466_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

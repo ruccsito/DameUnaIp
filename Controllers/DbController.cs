@@ -5,9 +5,11 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Linq;
 
 namespace DameUnaIP.Controllers
 {
+
     public class DbController : Controller
     {
         // GET: Db
@@ -17,28 +19,28 @@ namespace DameUnaIP.Controllers
         }
 
         // Crear cosas en la DB.
-        public ActionResult UpdateByPing()
+        public ActionResult UpdateByPing(int id)
         {
-            ServerDBContext db = new ServerDBContext();
-
-            var AllIps = from i in db.IpAddrs
-                         where i.vlanId == 1
-                         select i;
-
-            Ping myPing = new Ping();
-            
-            foreach (var i in AllIps)
+            using (ServerDBContext db = new ServerDBContext())
             {
-                PingReply myPingReply = myPing.Send(i.Addr);
+                var AllIps = from i in db.IpAddrs
+                             where i.vlanId == id
+                             select i;
 
-                if (myPingReply.Status == IPStatus.Success)
+                Ping myPing = new Ping();
+
+                foreach (var i in AllIps)
                 {
-                    i.InUse = true;
+                    PingReply myPingReply = myPing.Send(i.Addr, 2000);
+
+                    if (myPingReply.Status == IPStatus.Success)
+                    {
+                        i.InUse = true;
+                    }
                 }
+
+                db.SaveChanges();
             }
-
-            db.SaveChanges();
-
             return Content(":D");
         }
 
