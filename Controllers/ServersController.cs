@@ -17,12 +17,12 @@ namespace DameUnaIP.Controllers
         {
             return View();
         }
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
             var FreeIps = (from i in db.IpAddrs
-                           where i.InUse == false
+                           where i.InUse == false && i.vlanId == id
                            orderby i.Addr
-                           select new { i.id, i.Addr }).Skip(10).Take(5);
+                           select new { i.id, i.Addr }).Skip(10).Take(15);
 
             ViewBag.IpAddrId = new SelectList(FreeIps, "id", "Addr");
             ViewBag.OsId = new SelectList(db.Os, "id", "OsName");
