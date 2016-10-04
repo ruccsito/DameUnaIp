@@ -1,0 +1,34 @@
+﻿@model IEnumerable<DameUnaIP.Models.ServersModel>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            OS
+        </th>
+        <th>
+            Addr
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OsId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IpAddrId)
+        </td>
+    </tr>
+}
+
+</table>

@@ -8,10 +8,8 @@ using System.Web.Mvc;
 
 namespace DameUnaIP.Controllers
 {
-    public class ServersController : Controller
+    public class ServersController : BaseController
     {
-        private ServerDBContext db = new ServerDBContext();
-
         // GET: Servers
         public ActionResult Index()
         {
@@ -19,21 +17,29 @@ namespace DameUnaIP.Controllers
         }
         public ActionResult Create(int id)
         {
-            var FreeIps = (from i in db.IpAddrs
-                           where i.InUse == false && i.vlanId == id
-                           orderby i.Addr
-                           select new { i.id, i.Addr }).Skip(10).Take(15);
+            // Don't skip first 10 if vlan is DMZ. 
+            dynamic FreeIps; 
+             
+            if (id == 4 || id == 5)
+            {
+                FreeIps = (from i in db.IpAddrs
+                               where i.InUse == false && i.vlanId == id
+                               orderby i.Addr
+                               select new { i.id, i.Addr }).OrderBy(x => x.id);
+            }
+            else
+            {
+                FreeIps = (from i in db.IpAddrs
+                               where i.InUse == false && i.vlanId == id
+                               orderby i.Addr
+                               select new { i.id, i.Addr }).OrderBy(x => x.id).Skip(10);
+            }
 
             ViewBag.IpAddrId = new SelectList(FreeIps, "id", "Addr");
             ViewBag.OsId = new SelectList(db.Os, "id", "OsName");
             return View();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="NewServer"></param>
-        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Name,IpAddrId,OsId")] NewServerModel NewServer)

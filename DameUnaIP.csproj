@@ -196,8 +196,10 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\IpsController.cs" />
+    <Compile Include="Controllers\LoadServersController.cs" />
     <Compile Include="Controllers\Original\AccountController.cs" />
     <Compile Include="Controllers\DbController.cs" />
     <Compile Include="Controllers\Original\HomeController.cs" />
@@ -226,6 +228,7 @@
     <Compile Include="Models\VlansModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Tools\Tools.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -300,9 +303,11 @@
     <Content Include="Views\Ips\Index.cshtml" />
     <Content Include="Views\Servers\Create.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\LoadServers\Start.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

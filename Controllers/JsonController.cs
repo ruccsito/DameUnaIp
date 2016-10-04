@@ -10,13 +10,11 @@ using System.Net.NetworkInformation;
 
 namespace DameUnaIP.Controllers
 {
-    public class JsonController : Controller
+    public class JsonController : BaseController
     {
         // GET: Json for IPs
         public ActionResult IPs(int id, DataTablesModel param)
         {
-            ServerDBContext db = new ServerDBContext();
-
             var query = (from i in db.IpAddrs where i.vlanId == id select i).ToArray();
 
             IEnumerable<string[]> results;
@@ -51,8 +49,6 @@ namespace DameUnaIP.Controllers
         // GET: Json for Servers
         public ActionResult Servers(DataTablesModel param)
         {
-            ServerDBContext db = new ServerDBContext();
-
             var query = (from s in db.Servers select s).ToArray();
 
             IEnumerable<string[]> results;
@@ -62,7 +58,8 @@ namespace DameUnaIP.Controllers
                 results = (from s in query
                            select new[] { s.Name, s.IpAddr.Addr, s.Os.OsName, s.Created.Date.ToShortDateString(), "<a href=\"/Servers/Edit/" + s.id + "\"> Edit! </a>" })
                           .Skip(param.iDisplayStart)
-                          .Take(param.iDisplayLength);
+                          .Take(param.iDisplayLength)
+                          .OrderBy(x => x[0]);
             }
 
             else
@@ -91,9 +88,6 @@ namespace DameUnaIP.Controllers
 
         public ActionResult Pinguear(int id)
         {
-
-            ServerDBContext db = new ServerDBContext();
-
             var ip = db.IpAddrs.First(i => i.id == id);
 
             Ping myPing = new Ping();
