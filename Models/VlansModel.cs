@@ -11,5 +11,8 @@ namespace DameUnaIP.Models
     {
         public int id { get; set; }
         public string Name { get; set; }
+        public string Network { get; set; }
+        public string Gateway { get; set; }
+        public string Mask { get; set; }
     }
 }

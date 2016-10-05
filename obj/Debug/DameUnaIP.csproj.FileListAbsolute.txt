@@ -337,3 +337,5 @@ C:\Users\Julio\Desktop\DameUnaIp\obj\Debug\DameUnaIP.Migrations.Initial.resource
 C:\Users\Julio\Desktop\DameUnaIp\obj\Debug\DameUnaIP.csproj.GenerateResource.Cache
 C:\Users\Julio\Desktop\DameUnaIp\obj\Debug\DameUnaIP.dll
 C:\Users\Julio\Desktop\DameUnaIp\obj\Debug\DameUnaIP.pdb
+C:\Users\Julio\Desktop\DameUnaIp\obj\Debug\DameUnaIP.csprojResolveAssemblyReference.cache
+C:\Users\Julio\Desktop\DameUnaIp\obj\Debug\DameUnaIP.Migrations.AddedVlanData.resources

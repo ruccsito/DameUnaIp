@@ -207,12 +207,17 @@
     <Compile Include="Controllers\Original\ManageController.cs" />
     <Compile Include="Controllers\ServersController.cs" />
     <Compile Include="Controllers\SrvScaController.cs" />
+    <Compile Include="Controllers\VlansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201609271855466_Initial.cs" />
     <Compile Include="Migrations\201609271855466_Initial.Designer.cs">
       <DependentUpon>201609271855466_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610050021321_AddedVlanData.cs" />
+    <Compile Include="Migrations\201610050021321_AddedVlanData.Designer.cs">
+      <DependentUpon>201610050021321_AddedVlanData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DashboardModel.cs" />
@@ -304,6 +309,8 @@
     <Content Include="Views\Servers\Create.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\LoadServers\Start.cshtml" />
+    <Content Include="Views\Servers\IndexOriginal.cshtml" />
+    <Content Include="Views\Vlans\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -320,6 +327,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201609271855466_Initial.resx">
       <DependentUpon>201609271855466_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610050021321_AddedVlanData.resx">
+      <DependentUpon>201610050021321_AddedVlanData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

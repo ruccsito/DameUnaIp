@@ -6,25 +6,89 @@
 @model IEnumerable<DameUnaIP.Models.ServersModel>
 
 <div class="row">
-</div>
-<div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <b>Servers</b>
             </div>
             <div class="panel-body">
-                <table id="servers" class="table table-striped" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th>@Html.DisplayNameFor(model => model.Name)</th>
-                            <th>@Html.DisplayNameFor(model => model.IpAddrId)</th>
-                            <th>@Html.DisplayNameFor(model => model.OsId)</th>
-                            <th>@Html.DisplayNameFor(model => model.Created)</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                </table>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#Tapeless" aria-controls="Tapeless" role="tab" data-toggle="tab">Tapeless</a></li>
+                    <li role="presentation"><a href="#Broadcast" aria-controls="Broadcast" role="tab" data-toggle="tab">Broadcast</a></li>
+                    <li role="presentation"><a href="#Managment" aria-controls="Managment" role="tab" data-toggle="tab">Managment</a></li>
+                    <li role="presentation"><a href="#PrivDMZ" aria-controls="PrivDMZ" role="tab" data-toggle="tab">Private DMZ</a></li>
+                    <li role="presentation"><a href="#PubDMZ" aria-controls="PubDMZ" role="tab" data-toggle="tab">Public DMZ</a></li>
+                </ul>
+
+                <!-- Tab content -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="Tapeless">
+                        <table id="TapelessTable" class="table table-striped" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                                    <th>@Html.DisplayNameFor(model => model.IpAddr.Addr)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Os.OsName)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Created)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="Broadcast">
+                        <table id="BroadcastTable" class="table table-striped" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                                    <th>@Html.DisplayNameFor(model => model.IpAddr.Addr)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Os.OsName)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Created)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="Managment">
+                        <table id="ManagmentTable" class="table table-striped" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                                    <th>@Html.DisplayNameFor(model => model.IpAddr.Addr)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Os.OsName)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Created)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="PrivDMZ">
+                        <table id="PrivDMZTable" class="table table-striped" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                                    <th>@Html.DisplayNameFor(model => model.IpAddr.Addr)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Os.OsName)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Created)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="PubDMZ">
+                        <table id="PubDMZTable" class="table table-striped" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                                    <th>@Html.DisplayNameFor(model => model.IpAddr.Addr)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Os.OsName)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Created)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -36,18 +100,33 @@
 
 <script type="text/javascript">
         $(document).ready(function () {
+            loadTable('TapelessTable', '1');
+            loadTable('BroadcastTable', '2');
+            loadTable('ManagmentTable', '3');
+            loadTable('PrivDMZTable', '4');
+            loadTable('PubDMZTable', '5');
+        });
 
-            $('#servers').dataTable({
-                "bServerSide": true,
-                "sAjaxSource": "/json/servers",
-                "bProcessing": true,
-                "aoColumns": [
+
+        function loadTable(table, id) {
+
+            var rows = $('#' + table + "_table tbody tr").length;
+
+            if (rows < 1) {
+
+                $('#' + table).dataTable({
+                    "bServerSide": true,
+                    "sAjaxSource": "/json/servers/" + id,
+                    "bProcessing": true,
+                    "iDisplayLength": 50,
+                    "aoColumns": [
                                 { "sName": "Name" },
                                 { "sName": "IpAddr" },
                                 { "sName": "OS" },
                                 { "sName": "Created" },
                                 { "sName": "Edit" }
-                ]
-            });
-        });
+                    ]
+                });
+            }
+        }
 </script>

@@ -47,26 +47,27 @@ namespace DameUnaIP.Controllers
         }
 
         // GET: Json for Servers
-        public ActionResult Servers(DataTablesModel param)
+        public ActionResult Servers(int id, DataTablesModel param)
         {
-            var query = (from s in db.Servers select s).ToArray();
+            //var query = (from s in db.Servers select s).ToArray();
+            var query = db.Servers.Where(s => s.IpAddr.vlanId == id).ToArray();
 
             IEnumerable<string[]> results;
 
             if (string.IsNullOrEmpty(param.sSearch))
             {
                 results = (from s in query
+                           orderby s.Name
                            select new[] { s.Name, s.IpAddr.Addr, s.Os.OsName, s.Created.Date.ToShortDateString(), "<a href=\"/Servers/Edit/" + s.id + "\"> Edit! </a>" })
                           .Skip(param.iDisplayStart)
-                          .Take(param.iDisplayLength)
-                          .OrderBy(x => x[0]);
+                          .Take(param.iDisplayLength);
             }
 
             else
             {
-                
                 results = (from s in query
                            where s.Name.ToLower().Contains(param.sSearch.ToLower()) || s.IpAddr.Addr.Contains(param.sSearch)
+                           orderby s.Name
                            select new[] { s.Name, s.IpAddr.Addr, s.Os.OsName, s.Created.Date.ToShortDateString(), "<a href=\"/Servers/Edit/" + s.id + "\"> Edit! </a>" })
                           .Skip(param.iDisplayStart)
                           .Take(param.iDisplayLength);
